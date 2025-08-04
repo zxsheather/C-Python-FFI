@@ -1,6 +1,10 @@
 import ctypes
+import sys
 
-libc = ctypes.cdll.LoadLibrary("./liblib.so")
+if sys.platform.startswith('linux'):
+    libc = ctypes.cdll.LoadLibrary("./liblib_x86.so")
+else :
+    libc = ctypes.cdll.LoadLibrary("./liblib.dll")
 
 libc.hello()
 
